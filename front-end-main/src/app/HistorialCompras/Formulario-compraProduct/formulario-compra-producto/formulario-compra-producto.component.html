@@ -1,0 +1,29 @@
+<form [formGroup]="form" (submit)="guardarCambios()">
+  <mat-form-field appareance="outline">
+    <mat-label>Nombre del comprador</mat-label>
+    <input formControlName="clientName" matInput />
+    <mat-error>El campo nombre es requerido</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appareance="outline">
+    <mat-label>Tipo de documento</mat-label>
+    <input formControlName="idType" type="number" min="0" matInput />
+    <mat-error>El campo es requerido</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appareance="outline">
+    <mat-label>Número de documento</mat-label>
+    <input formControlName="id" type="number" min="1" matInput />
+    <mat-error>El campo es requerido</mat-error>
+  </mat-form-field>
+  <h3>Compras realizadas</h3>
+  <app-listado-products [availableModification]="false" [products]="productToBuy">
+  </app-listado-products>
+
+  <div>
+    <button mat-flat-button color="primary" [disabled]="form.invalid">
+      Guardar Cambios
+    </button>
+    <a mat-stroked-button routerLink="/">Cancelar</a>
+  </div>
+</form>

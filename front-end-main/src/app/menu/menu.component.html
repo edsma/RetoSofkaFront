@@ -1,0 +1,57 @@
+<mat-toolbar color="primary">
+  <span>
+    <a routerLink="" mat-button>
+      <mat-icon>home</mat-icon>  Reto Front Sofka
+    </a>
+  </span>
+
+  <div>
+    <a mat-button routerLink="products/crear">Crear Producto</a>
+  </div>
+
+  <div>
+    <a mat-button routerLink="historial/listar">Listar historial de compras</a>
+  </div>
+
+  <span>
+    <a routerLink="compras/finalizar" mat-button>
+      <mat-icon>shopping_cart</mat-icon>  Carrito de compras
+    </a>
+  </span>
+
+  <app-autorizado>
+    
+    <ng-container Autorizado>
+      <div>
+        <a mat-button routerLink="generos">Generos</a>
+      </div>
+
+      <div>
+        <a mat-button routerLink="actores">Actores</a>
+      </div>
+
+      <div>
+        <a mat-button routerLink="cines">Cines</a>
+      </div>
+
+      <div>
+        <a mat-button routerLink="peliculas/crear">Crear Pelicula</a>
+      </div>
+      <div>
+        <a mat-button routerLink="usuarios">Crear Pelicula</a>
+      </div>
+    </ng-container>
+  </app-autorizado>
+<div class="espacio"></div>
+<app-autorizado>
+  <ng-container Autorizado>
+    <span>Hola, {{seguridadService.obtenerCampoJwt('email')}} </span>
+    <a mat-button (click)="seguridadService.logOut()">Logout</a>
+  </ng-container>
+  <ng-container autorizado>
+    <a mat-button routerLink="login">Login</a>
+    <a mat-button routerLink="registro">Registrar</a>
+  </ng-container>
+</app-autorizado>
+
+</mat-toolbar>

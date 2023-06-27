@@ -1,0 +1,35 @@
+
+<h3>
+  Historial de compras
+</h3>
+<app-listado-generico [listado]="allProducts">
+    <ng-container vacio>
+      <div>Mensaje personalizado para contenido <b>Vacio</b></div>
+    </ng-container>
+    <ng-container contenedor>
+      <div class="compras-contenedor">
+        <div
+          *ngFor="let product of allProducts; let index = index"
+          class="compra-contenedor"
+        >
+            <h3>{{product.clientName}}</h3>
+            <hr>
+            <ng-container>
+                Fecha de compra: {{product.date |  date:'medium'}}<br>
+                Tipo de documento: {{product.idType}}<br>
+                Número: {{product.id}}<br>
+            </ng-container>
+            <hr>
+            <ng-container>
+              <div>
+                <a mat-flat-button color="primary" [routerLink]="[getLink(product)]">
+                  Ver detalle
+                </a>
+              </div>
+            </ng-container>
+         
+        </div>
+      </div>
+    </ng-container>
+  </app-listado-generico>
+  

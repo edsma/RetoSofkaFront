@@ -1,0 +1,25 @@
+<h2>Listado de productos</h2>
+
+<div class="container-menu">
+  <div>
+    <span>
+      <a mat-button (click)="GetProducts(false)">
+        <mat-icon>arrow_back</mat-icon> Pagina anterior
+      </a>
+    </span>
+  </div>
+  <div >
+    <span>
+        <a  mat-button (click)="GetProducts(true)">
+          <mat-icon>arrow_forward</mat-icon> Pagina anterior
+        </a>
+      </span>
+  </div>
+</div>
+
+<app-listado-products
+  (borrado)="borrado()"
+  [availableModification]="true"
+  [products]="allProducts"
+>
+</app-listado-products>

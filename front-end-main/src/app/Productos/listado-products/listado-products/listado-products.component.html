@@ -1,0 +1,67 @@
+<app-listado-generico [listado]="products">
+  <ng-container vacio>
+    <div>Mensaje personalizado para contenido <b>Vacio</b></div>
+  </ng-container>
+  <ng-container contenedor>
+    <div class="products-contenedor">
+      <div
+        *ngFor="let product of products; let index = index"
+        class="product-contenedor"
+      >
+        <h3>{{ product.nameProduct }}</h3>
+        <hr />
+        <ng-container *ngIf="availableModification">
+          Disponibles: {{ product.inInventory }}<br />
+          Maximo para comprar: {{ product.max }}<br />
+          Minimo para comprarar: {{ product.min }}<br />
+          <mat-form-field class="example-form-field">
+            <mat-label>Cantidad a comprar</mat-label>
+            <input matInput type="number" value="" (change)="product.quantity = $event.target.value"  min="1" max="{{product.max}}">
+            <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </ng-container>
+
+        <ng-container *ngIf="!availableModification">
+          Disponibles: {{ product.inInventory }}<br />
+          Cantidad compradas: {{ product.quantity }}<br />
+        </ng-container>
+        <hr />
+        <ng-container *ngIf="availableModification">
+          <div>
+            <a
+              mat-flat-button
+              color="primary"
+              [routerLink]="'/products/editar/' + product.idProduct"
+            >
+              Editar
+            </a>
+            <button
+              mat-flat-button
+              color="warn"
+              [swal]="{
+                title: 'Confirmación',
+                text: 'Esta seguro que desea eliminar el registro?',
+                showCancelButton: 'true'
+              }"
+              (confirm)="delete(product.idProduct)"
+              type="button"
+            >
+              Eliminar
+            </button>
+            <button
+            [disabled]="product.inInventory === 0"
+              mat-flat-button
+              color="accent"
+              (click)="AddToBuy(product)"
+              type="button"
+            >
+              Añadir a carrito
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+</app-listado-generico>

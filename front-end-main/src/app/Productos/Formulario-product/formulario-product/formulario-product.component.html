@@ -1,0 +1,38 @@
+<form [formGroup]="form" (submit)="guardarCambios()">
+    <mat-form-field appareance="outline">
+        <mat-label>Nombre del producto</mat-label>
+        <input formControlName="nameProduct" matInput/>
+        <mat-error>El campo titulo es requerido ó ingreso un caracter no permitido</mat-error>
+    </mat-form-field>
+
+
+    <div class="contenedor-checkbox">
+        <mat-checkbox ngDefaultControl formControlName="enabled">Disponible?</mat-checkbox>
+    </div>
+
+    <mat-form-field appareance="outline">
+        <mat-label>Actualmente en inventario</mat-label>
+        <input formControlName="inInventory" type="number" min="1" matInput/>
+        <mat-error>El campo es requerido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appareance="outline">
+        <mat-label>Cantidad minima</mat-label>
+        <input formControlName="min" type="number" min="1" matInput/>
+        <mat-error>El campo es requerido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appareance="outline">
+        <mat-label>Cantidad maxima</mat-label>
+        <input formControlName="max" type="number" min="1" matInput/>
+        <mat-error>El campo es requerido</mat-error>
+    </mat-form-field>
+
+
+    <div>
+        <button mat-flat-button color="primary" [disabled]="form.invalid">
+            Guardar Cambios
+        </button>
+        <a mat-stroked-button routerLink="/">Cancelar</a>
+    </div>
+</form>
